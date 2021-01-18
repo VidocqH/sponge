@@ -45,6 +45,18 @@ int main() {
         }
 
         {
+            ReassemblerTestHarness test{2};
+            
+            test.execute(SubmitSegment{"bc", 1});
+            test.execute(BytesAssembled(0));
+
+            test.execute(SubmitSegment{"a", 0});
+            test.execute(BytesAssembled(2));
+            
+            test.execute(BytesAvailable("ab"));
+        }
+
+        {
             ReassemblerTestHarness test{1};
 
             test.execute(SubmitSegment{"ab", 0});
